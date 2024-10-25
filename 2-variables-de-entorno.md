@@ -1,6 +1,7 @@
 # Variables de Entorno
-### ¿Qué son las variables de entorno
+### ¿Qué son las variables de entorno?
 # COMPLETAR
+Las variables de entorno son variables almacenadas en el sistema operativo que contienen valores globales accesibles por los programas y scripts en ejecución. Estas variables son clave en muchos sistemas y aplicaciones, ya que permiten configurar y ajustar el comportamiento del software sin necesidad de modificar el código fuente.
 
 ### Para crear un contenedor con variables de entorno?
 
@@ -11,14 +12,29 @@ docker run -d --name <nombre contenedor> -e <nombre variable1>=<valor1> -e <nomb
 ### Crear un contenedor a partir de la imagen de nginx:alpine con las siguientes variables de entorno: username y role. Para la variable de entorno rol asignar el valor admin.
 
 # COMPLETAR
+```
+docker run -d --name contenedor_nginx -e username=miguel -e role=admin nginx:alpine
+```
 
 # CAPTURA CON LA COMPROBACIÓN DE LA CREACIÓN DE LAS VARIABLES DE ENTORNO DEL CONTENEDOR ANTERIOR
-
+![alt text](image-5.png)
 ### Crear un contenedor con mysql:8 , mapear todos los puertos
 # COMPLETAR
+```
+docker run -d --name contenedor_mysql -e MYSQL_ROOT_PASSWORD=admin123 -P mysql:8
+```
 
 ### ¿El contenedor se está ejecutando?
 # COMPLETAR
+Sí
+```
+PS C:\Users\migue> docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                   
+                            NAMES
+fb71c28a69a3   mysql:8        "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:32768->3306/tcp, 0.0.0.0:32769->33060/tcp   contenedor_mysql
+dcd73a4f0be5   nginx:alpine   "/docker-entrypoint.…"   6 minutes ago   Up 6 minutes   80/tcp                  
+                            contenedor_nginx
+```
 
 ### Identificar el problema
 # COMPLETAR
