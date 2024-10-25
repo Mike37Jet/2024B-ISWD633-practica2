@@ -21,26 +21,30 @@ docker run -d --name contenedor_nginx -e username=miguel -e role=admin nginx:alp
 ### Crear un contenedor con mysql:8 , mapear todos los puertos
 # COMPLETAR
 ```
-docker run -d --name contenedor_mysql -e MYSQL_ROOT_PASSWORD=admin123 -P mysql:8
+docker run -d --name contenedor_mysql -P mysql:8
 ```
 
 ### ¿El contenedor se está ejecutando?
 # COMPLETAR
-Sí
+No se está ejecutando.
 ```
 PS C:\Users\migue> docker ps
-CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                   
-                            NAMES
-fb71c28a69a3   mysql:8        "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:32768->3306/tcp, 0.0.0.0:32769->33060/tcp   contenedor_mysql
-dcd73a4f0be5   nginx:alpine   "/docker-entrypoint.…"   6 minutes ago   Up 6 minutes   80/tcp                  
-                            contenedor_nginx
+CONTAINER ID   IMAGE          COMMAND                  CREATED       STATUS         PORTS     NAMES
+dcd73a4f0be5   nginx:alpine   "/docker-entrypoint.…"   4 hours ago   Up 3 minutes   80/tcp    contenedor_nginx
 ```
 
 ### Identificar el problema
 # COMPLETAR
+En la declaración de la línea de comando para crear el contenedor MYSQL:8, no se especificó cuál es la variable de entorno; por lo tanto, no se ejecuta el contenedor.
+```
+docker run -d --name contenedor_mysql -e MYSQL_ROOT_PASSWORD=admin123 -P mysql:8
+```
 
 ### Eliminar el contenedor creado con mysql:8 
 # COMPLETAR
+```
+docker rm contenedor_mysql
+```
 
 ### Para crear un contenedor con variables de entorno especificadas
 - Portabilidad: Las aplicaciones se vuelven más portátiles y pueden ser desplegadas en diferentes entornos (desarrollo, pruebas, producción) simplemente cambiando el archivo de variables de entorno.
@@ -58,8 +62,18 @@ Es necesario especificar la ruta absoluta del archivo si este se encuentra en un
 
 ### Crear un contenedor con mysql:8 , mapear todos los puertos y configurar las variables de entorno mediante un archivo
 # COMPLETAR
+```
+docker run -P -d --name mysql_contenedor --env-file=C:\Users\migue\Desktop\varables_entorno.txt mysql:8
+```
 
 # CAPTURA CON LA COMPROBACIÓN DE LA CREACIÓN DE LAS VARIABLES DE ENTORNO DEL CONTENEDOR ANTERIOR 
+![alt text](image-6.png)
 
 ### ¿Qué bases de datos existen en el contenedor creado?
+En el contenedor de MySQL creado, existen las siguientes bases de datos:
+- **information_schema:** Contiene información sobre todas las demás bases de datos y sus objetos (tablas, columnas, etc.).
+- **mysql:** Base de datos que almacena los datos de usuario y privilegios de acceso.
+- **performance_schema:** Proporciona información sobre el rendimiento del servidor MySQL y estadísticas sobre la ejecución de las consultas.
+- **sys:** Una base de datos que facilita el acceso a las estadísticas de rendimiento y configuración del servidor.
 # COMPLETAR
+![alt text](image-7.png)
