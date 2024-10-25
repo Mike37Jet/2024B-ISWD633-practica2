@@ -15,9 +15,13 @@ docker run -P -d --name <nombre contenedor> <nombre imagen>:<tag>
 No puedes mapear puertos a un contenedor existente directamente después de su creación con Docker. El mapeo de puertos debe especificarse en el momento de crear y ejecutar el contenedor.
 
 ### Crear contenedor de Jenkins puertos contenedor: 8080 (interface web) y 50000 (comunicación entre nodos) imagen: jenkins/jenkins:alpine3.18-jdk11
-# COMPLETAR
+
+```
+docker run -d --name contenedor_jenkins --publish 8080:8080 --publish 50000:50000 jenkins/jenkins:alpine3.18-jdk11
+```
 
 # COLOCAR UNA CAPTURA DE PANTALLA  DEL ACCESO http://localhost:8080
+![alt text](image.png)
 
 ### ¿Cómo obtener la contraseña solicitada?
 Para obtener la contraseña solicitada es necesario ingresar al contenedor.
@@ -32,11 +36,15 @@ docker exec <nombre contenedor> <comando> <argumentos opcionales>
 ```
 # COMPLETAR
 ### ¿Para qué se usa el comando ls?
+El comando ls en Linux se utiliza para listar los archivos y directorios contenidos en un directorio. Sin opciones, muestra los nombres de los archivos en el directorio actual.
 ### ¿Para qué sirve el argumento -l junto al comando ls?
+El argumento -l se utiliza con el comando ls para mostrar una lista detallada. Esto incluye información como los permisos del archivo, el número de enlaces, el propietario, el grupo, el tamaño del archivo, la fecha de la última modificación y el nombre del archivo o directorio.
 ### Usar el contenedor de jenkins creado previamente y ejecutar el comando ls con el argumento -l
-# COMPLETAR
+```
+docker exec contenedor_jenkins ls -l
+```
 # COLOCAR UNA CAPTURA DE PANTALLA
-
+![alt text](image-1.png)
 ### Para ejecutar un shell interactivo en un contenedor de Docker especificado.
 El comando **docker exec** te permite acceder a la sesión shell de un contenedor en ejecución, estarás dentro del contenedor y podrás ejecutar comandos como si estuvieras en una terminal normal. 
 Para saber qué comando utilizar para abrir una terminal dentro de un contenedor, es útil conocer la imagen base del contenedor, ya que diferentes imágenes pueden usar diferentes shells o comandos para abrir una terminal. Puedes verificar la documentación de la imagen del contenedor en Docker Hub o en el repositorio de la imagen para obtener información específica sobre cómo abrir una terminal en esa imagen.
