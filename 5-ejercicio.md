@@ -24,7 +24,7 @@ Ingresar desde el navegador al wordpress y finalizar la configuración de instal
 # COLOCAR UNA CAPTURA DE LA CONFIGURACIÓN
 ![alt text](image-17.png)
 Desde el panel de admin: cambiar el tema y crear una nueva publicación.
-Ingresar a: http://localhost:9300/ 
+Ingresar a: http://localhost:8080/ 
 recordar que a es el puerto que usó para el mapeo con wordpress
 # COLOCAR UNA CAPTURA DEL SITO EN DONDE SEA VISIBLE LA PUBLICACIÓN.
 ![alt text](image-18.png)
@@ -33,7 +33,7 @@ recordar que a es el puerto que usó para el mapeo con wordpress
 docker rm -f wordpress
 
 ### Crear nuevamente el contenedor wordpress
-Ingresar a: http://localhost:9300/ 
+Ingresar a: http://localhost:8080/ 
 recordar que a es el puerto que usó para el mapeo con wordpress
 
 ### ¿Qué ha sucedido, qué puede observar?
